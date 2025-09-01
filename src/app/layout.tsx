@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Provider } from "@/components/chakra/provider";
+import IncompatibleScreenWrapper from "@/lib/react-utils/IncompatibleScreenWrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,9 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body>
         <Provider>
-          {children}
+          <IncompatibleScreenWrapper>
+            {children}
+          </IncompatibleScreenWrapper>
         </Provider>
       </body>
     </html>
