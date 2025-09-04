@@ -1,4 +1,5 @@
 import { Button, VStack } from "@chakra-ui/react";
+import { COLORS } from "@/components/ui/design-system";
 
 export default function Cta() {
 	return (
@@ -10,7 +11,7 @@ export default function Cta() {
 				rounded="2xl"
 				w="288px"
 				fontSize="lg"
-				bg={{ base: "#756EF3", _hover: "#615cb9" }}
+				bg={{ base: COLORS.main, _hover: COLORS.mainHovered }}
 			>
 				<a href="/auth/login">Get Started</a>
 			</Button>

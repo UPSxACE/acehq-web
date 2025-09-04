@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { Provider } from "@/components/chakra/provider";
 import IncompatibleScreenWrapper from "@/lib/react-utils/IncompatibleScreenWrapper";
+import "./globals.css";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
