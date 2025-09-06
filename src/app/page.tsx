@@ -1,10 +1,11 @@
-import { Icon, Stack, Text, VStack } from "@chakra-ui/react";
+import { HStack, Icon, Stack, Text, VStack } from "@chakra-ui/react";
 import Cta from "@/components/pages/home/Cta";
 import Sidebar from "@/components/pages/home/Sidebar";
 import Logo from "@/components/svg/brand/acehq.svg";
 import { CSS_FULLSCREEN } from "@/components/ui/design-system";
 import Navbar from "@/components/ui/layout/Navbar";
 import { auth0 } from "@/lib/auth0";
+import Publish from "@/components/pages/home/Publish";
 
 export default async function Home() {
 	const session = await auth0.getSession();
@@ -39,27 +40,28 @@ export default async function Home() {
 	return (
 		<>
 			<Navbar />
-			<Stack direction="row" height={CSS_FULLSCREEN} gap={0}>
+			<Stack direction="row" height={CSS_FULLSCREEN} gap={0} justify="center">
 				<Stack w="300px" borderRight={`1px solid #CBD5E1`} pos="relative">
 					<Sidebar />
 				</Stack>
-				<Stack h="100%" flexGrow={1} pos="relative" as="main">
-					<VStack bg="#ffffff" minH={CSS_FULLSCREEN} justify="center" gap={8}>
-						<VStack gap={2}>
-							<Icon fontSize="100px">
-								<Logo />
-							</Icon>
-							<Text textStyle="2xl" fontWeight="semibold" color="gray.900">
-								AceHQ
-							</Text>
-						</VStack>
-						<VStack gap={1} mt={1}>
-							<Text textStyle="4xl" fontWeight="bolder">
-								Welcome, {session.user.nickname}.
-							</Text>
-						</VStack>
-					</VStack>
+				<Stack
+					as="main"
+					direction="row"
+					h="100%"
+					flexGrow={1}
+					maxW="900px"
+					pos="relative"
+					justify="center"
+				>
+					<Stack flexShrink={1} w="100%">
+						<Publish />
+					</Stack>
 				</Stack>
+				<Stack
+					w="300px"
+					borderLeft={`1px solid #CBD5E1`}
+					pos="relative"
+				></Stack>
 			</Stack>
 		</>
 	);
