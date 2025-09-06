@@ -29,6 +29,7 @@ export default function Publish() {
 					</AvatarGroup>
 				</Stack>
 				<Textarea
+					fontWeight="light"
 					flexGrow={1}
 					pt={2}
 					pl={4}

@@ -8,7 +8,15 @@ export default async function Navbar() {
 	const session = await auth0.getSession();
 
 	return (
-		<HStack h={`${NAVBAR_HEIGHT}px`} borderBottom="1px solid #CBD5E1" px="16px">
+		<HStack
+			h={`${NAVBAR_HEIGHT}px`}
+			borderBottom="1px solid #CBD5E1"
+			px="16px"
+			position="sticky"
+			top={0}
+			bg="white"
+			zIndex={50}
+		>
 			<HStack gap={1} w="full">
 				<Icon asChild fontSize="32px">
 					<Link href="/">

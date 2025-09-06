@@ -2,6 +2,8 @@ import { Button, Icon, Stack } from "@chakra-ui/react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { PiHouse } from "react-icons/pi";
+import { CSS_FULLSCREEN } from "@/components/ui/design-system";
+import { NAVBAR_HEIGHT } from "@/components/ui/layout/constants";
 
 const ITEMS = [
 	{
@@ -14,7 +16,7 @@ const ITEMS = [
 
 export default function Sidebar() {
 	return (
-		<>
+		<Stack pos="fixed" top={`${NAVBAR_HEIGHT}px`} h={CSS_FULLSCREEN} w="300px">
 			<Stack p={4}>
 				{ITEMS.map((i) => {
 					return (
@@ -23,7 +25,7 @@ export default function Sidebar() {
 				})}
 			</Stack>
 			<Stack mt="auto"></Stack>
-		</>
+		</Stack>
 	);
 }
 

@@ -1,11 +1,13 @@
 import { HStack, Icon, Stack, Text, VStack } from "@chakra-ui/react";
 import Cta from "@/components/pages/home/Cta";
+import Feed from "@/components/pages/home/Feed";
+import Publish from "@/components/pages/home/Publish";
 import Sidebar from "@/components/pages/home/Sidebar";
 import Logo from "@/components/svg/brand/acehq.svg";
 import { CSS_FULLSCREEN } from "@/components/ui/design-system";
+import { NAVBAR_HEIGHT } from "@/components/ui/layout/constants";
 import Navbar from "@/components/ui/layout/Navbar";
 import { auth0 } from "@/lib/auth0";
-import Publish from "@/components/pages/home/Publish";
 
 export default async function Home() {
 	const session = await auth0.getSession();
@@ -40,27 +42,27 @@ export default async function Home() {
 	return (
 		<>
 			<Navbar />
-			<Stack direction="row" height={CSS_FULLSCREEN} gap={0} justify="center">
+			<Stack direction="row" gap={0} justify="center">
 				<Stack w="300px" borderRight={`1px solid #CBD5E1`} pos="relative">
 					<Sidebar />
 				</Stack>
 				<Stack
 					as="main"
 					direction="row"
-					h="100%"
 					flexGrow={1}
 					maxW="900px"
 					pos="relative"
 					justify="center"
 				>
-					<Stack flexShrink={1} w="100%">
+					<Stack flexShrink={1} w="100%" gap={0}>
 						<Publish />
+						<Feed />
 					</Stack>
 				</Stack>
 				<Stack
+					pos="relative"
 					w="300px"
 					borderLeft={`1px solid #CBD5E1`}
-					pos="relative"
 				></Stack>
 			</Stack>
 		</>
