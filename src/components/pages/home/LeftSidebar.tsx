@@ -22,6 +22,8 @@ export default function LeftSidebar() {
 			h={CSS_FULLSCREEN}
 			pr={8}
 			pt={4}
+			pb={8}
+			pl={1}
 		>
 			<Stack p={4}>
 				{ITEMS.map((i) => {

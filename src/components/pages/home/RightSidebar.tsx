@@ -8,7 +8,7 @@ import {
 	Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { CSS_FULLSCREEN } from "@/components/ui/design-system";
+import { CSS_FULLSCREEN, NO_SCROLL } from "@/components/ui/design-system";
 import { NAVBAR_HEIGHT } from "@/components/ui/layout/constants";
 import { POSTS } from "./data";
 
@@ -21,10 +21,15 @@ export default function RightSidebar() {
 			pos="sticky"
 			top={`${NAVBAR_HEIGHT}px`}
 			h={CSS_FULLSCREEN}
+			overflowY="auto"
+			css={NO_SCROLL}
 			pl={8}
 			pt={8}
+			pb={8}
+			pr={1}
 		>
 			<Stack
+				flexShrink={0}
 				p={4}
 				gap={4}
 				pb={0}
@@ -34,7 +39,7 @@ export default function RightSidebar() {
 			>
 				<Text fontWeight="bold">Popular Posts</Text>
 				<Stack gap={0}>
-					{POSTS.sort(DESCENDING).map((p) => {
+					{POSTS.toSorted(DESCENDING).map((p) => {
 						return (
 							<Stack
 								bg={{ _hover: "gray.100" }}
