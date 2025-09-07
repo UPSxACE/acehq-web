@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Provider } from "@/components/chakra/provider";
 import IncompatibleScreenWrapper from "@/lib/react-utils/IncompatibleScreenWrapper";
 import "./globals.css";
+import SplashScreen from "@/lib/react-utils/LoadingSession";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -25,7 +26,9 @@ export default function RootLayout({
 			<body>
 				<ClerkProvider>
 					<Provider>
-						<IncompatibleScreenWrapper>{children}</IncompatibleScreenWrapper>
+						<IncompatibleScreenWrapper>
+							<SplashScreen>{children}</SplashScreen>
+						</IncompatibleScreenWrapper>
 					</Provider>
 				</ClerkProvider>
 			</body>
