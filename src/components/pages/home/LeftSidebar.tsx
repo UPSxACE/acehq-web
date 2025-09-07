@@ -14,9 +14,15 @@ const ITEMS = [
 	},
 ];
 
-export default function Sidebar() {
+export default function LeftSidebar() {
 	return (
-		<Stack pos="fixed" top={`${NAVBAR_HEIGHT}px`} h={CSS_FULLSCREEN} w="300px">
+		<Stack
+			pos="sticky"
+			top={`${NAVBAR_HEIGHT}px`}
+			h={CSS_FULLSCREEN}
+			pr={8}
+			pt={4}
+		>
 			<Stack p={4}>
 				{ITEMS.map((i) => {
 					return (

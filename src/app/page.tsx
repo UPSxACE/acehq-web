@@ -1,11 +1,10 @@
-import { HStack, Icon, Stack, Text, VStack } from "@chakra-ui/react";
+import { Icon, Stack, Text, VStack } from "@chakra-ui/react";
 import Cta from "@/components/pages/home/Cta";
 import Feed from "@/components/pages/home/Feed";
+import LeftSidebar from "@/components/pages/home/LeftSidebar";
 import Publish from "@/components/pages/home/Publish";
-import Sidebar from "@/components/pages/home/Sidebar";
+import RightSidebar from "@/components/pages/home/RightSidebar";
 import Logo from "@/components/svg/brand/acehq.svg";
-import { CSS_FULLSCREEN } from "@/components/ui/design-system";
-import { NAVBAR_HEIGHT } from "@/components/ui/layout/constants";
 import Navbar from "@/components/ui/layout/Navbar";
 import { auth0 } from "@/lib/auth0";
 
@@ -43,8 +42,14 @@ export default async function Home() {
 		<>
 			<Navbar />
 			<Stack direction="row" gap={0} justify="center">
-				<Stack w="300px" borderRight={`1px solid #CBD5E1`} pos="relative">
-					<Sidebar />
+				<Stack
+					ml={8}
+					flexGrow={1}
+					maxW={360}
+					borderRight={`1px solid #CBD5E1`}
+					pos="relative"
+				>
+					<LeftSidebar />
 				</Stack>
 				<Stack
 					as="main"
@@ -60,10 +65,14 @@ export default async function Home() {
 					</Stack>
 				</Stack>
 				<Stack
+					mr={8}
 					pos="relative"
-					w="300px"
+					flexGrow={1}
+					maxW={360}
 					borderLeft={`1px solid #CBD5E1`}
-				></Stack>
+				>
+					<RightSidebar />
+				</Stack>
 			</Stack>
 		</>
 	);
