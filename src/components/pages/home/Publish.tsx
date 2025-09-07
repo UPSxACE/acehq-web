@@ -1,6 +1,5 @@
 "use client";
 
-import { useUser } from "@auth0/nextjs-auth0";
 import {
 	AvatarFallback,
 	AvatarGroup,
@@ -11,6 +10,7 @@ import {
 	Stack,
 	Textarea,
 } from "@chakra-ui/react";
+import { useUser } from "@clerk/nextjs";
 import { HiOutlinePaperAirplane } from "react-icons/hi2";
 import { COLORS } from "@/components/ui/design-system";
 
@@ -18,13 +18,15 @@ export default function Publish() {
 	const { user } = useUser();
 	if (!user) return null;
 
+	// TODO: skeleton, or predict behavior from serverside to avoid flashing
+
 	return (
 		<Stack px={3} pt={1.5} pb={3.5} borderBottom="1px solid #CBD5E1" gap={1}>
 			<Stack direction="row" gap={0}>
 				<Stack pt={2}>
 					<AvatarGroup>
 						<AvatarRoot>
-							<AvatarFallback name={user.nickname} />
+							<AvatarFallback name={user.username || "User"} />
 						</AvatarRoot>
 					</AvatarGroup>
 				</Stack>

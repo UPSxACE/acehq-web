@@ -1,4 +1,5 @@
 import { Icon, Stack, Text, VStack } from "@chakra-ui/react";
+import { currentUser } from "@clerk/nextjs/server";
 import Cta from "@/components/pages/home/Cta";
 import Feed from "@/components/pages/home/Feed";
 import LeftSidebar from "@/components/pages/home/LeftSidebar";
@@ -6,12 +7,11 @@ import Publish from "@/components/pages/home/Publish";
 import RightSidebar from "@/components/pages/home/RightSidebar";
 import Logo from "@/components/svg/brand/acehq.svg";
 import Navbar from "@/components/ui/layout/Navbar";
-import { auth0 } from "@/lib/auth0";
 
 export default async function Home() {
-	const session = await auth0.getSession();
+	const user = await currentUser();
 
-	if (!session?.user) {
+	if (!user) {
 		return (
 			<VStack as="main" bg="#ffffff" minH={"100svh"} justify="center" gap={8}>
 				<VStack gap={2}>

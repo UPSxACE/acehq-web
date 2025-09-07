@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Provider } from "@/components/chakra/provider";
@@ -22,9 +23,11 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning className={`${inter.className}`}>
 			<body>
-				<Provider>
-					<IncompatibleScreenWrapper>{children}</IncompatibleScreenWrapper>
-				</Provider>
+				<ClerkProvider>
+					<Provider>
+						<IncompatibleScreenWrapper>{children}</IncompatibleScreenWrapper>
+					</Provider>
+				</ClerkProvider>
 			</body>
 		</html>
 	);

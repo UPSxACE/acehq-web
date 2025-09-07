@@ -1,11 +1,12 @@
 import { HStack, Icon, Text } from "@chakra-ui/react";
+import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 import Logo from "@/components/svg/brand/acehq_alt.svg";
-import { auth0 } from "@/lib/auth0";
 import { NAVBAR_HEIGHT } from "./constants";
+import Logout from "./Logout";
 
 export default async function Navbar() {
-	const session = await auth0.getSession();
+	const user = await currentUser();
 
 	return (
 		<HStack
@@ -26,16 +27,7 @@ export default async function Navbar() {
 				{/* <Icon ml="auto" fontSize="28px" color="gray.700">
 					<RiLogoutBoxRLine />
 				</Icon> */}
-				{session?.user && (
-					<Text
-						asChild
-						ml="auto"
-						textDecoration={{ _hover: "underline" }}
-						textUnderlineOffset={5}
-					>
-						<a href="/auth/logout">Logout</a>
-					</Text>
-				)}
+				{user && <Logout />}
 			</HStack>
 		</HStack>
 	);

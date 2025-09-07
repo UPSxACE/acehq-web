@@ -13,7 +13,7 @@ export default function Cta() {
 				fontSize="lg"
 				bg={{ base: COLORS.main, _hover: COLORS.mainHovered }}
 			>
-				<a href="/auth/login">Get Started</a>
+				<a href="/login">Get Started</a>
 			</Button>
 			{/* <Text
 				asChild
@@ -24,7 +24,7 @@ export default function Cta() {
 				textDecoration={{ _hover: "underline" }}
 				textUnderlineOffset={5}
 			>
-				<a href="/auth/login">Log In</a>
+				<a href="/login">Log In</a>
 			</Text> */}
 		</VStack>
 	);
