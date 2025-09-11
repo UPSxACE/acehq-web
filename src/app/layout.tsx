@@ -5,6 +5,7 @@ import { Provider } from "@/components/chakra/provider";
 import IncompatibleScreenWrapper from "@/lib/react-utils/IncompatibleScreenWrapper";
 import "./globals.css";
 import SplashScreen from "@/lib/react-utils/LoadingSession";
+import QueryClientProvider from "@/lib/tanstack-query/QueryClientProvider";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -25,11 +26,13 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning className={`${inter.className}`}>
 			<body>
 				<ClerkProvider>
-					<Provider>
-						<IncompatibleScreenWrapper>
-							<SplashScreen>{children}</SplashScreen>
-						</IncompatibleScreenWrapper>
-					</Provider>
+					<QueryClientProvider>
+						<Provider>
+							<IncompatibleScreenWrapper>
+								<SplashScreen>{children}</SplashScreen>
+							</IncompatibleScreenWrapper>
+						</Provider>
+					</QueryClientProvider>
 				</ClerkProvider>
 			</body>
 		</html>

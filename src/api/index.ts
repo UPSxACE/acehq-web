@@ -1,0 +1,23 @@
+import axios from "axios";
+import MissingEnv from "@/lib/error/MissingEnv";
+import type { Post } from "./types";
+
+const config = {
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+};
+
+if (!config.baseURL) {
+    throw new MissingEnv("NEXT_PUBLIC_API_BASE_URL");
+}
+
+const instance = axios.create({
+    baseURL: config.baseURL,
+    timeout: 60000,
+});
+
+const api = {
+    getPopularPosts: () =>
+        instance.get<Post[]>("/v1/posts/popular")
+};
+
+export default api;
