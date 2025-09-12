@@ -18,8 +18,7 @@ import Post from "./Post";
 export default function Feed() {
 	const { data, error, isLoading } = useQuery({
 		queryKey: ["posts"],
-		queryFn: () => api.getPosts(),
-		select: (res) => res.data,
+		queryFn: () => api.getPosts().then((res) => res.data),
 	});
 
 	if (error || isLoading || !data) {

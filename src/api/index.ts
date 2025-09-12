@@ -21,6 +21,8 @@ const api = {
         instance.get<Post[]>("/v1/posts"),
     getPopularPosts: () =>
         instance.get<Post[]>("/v1/posts/popular"),
+    likePost: (postId: string) => instance.post(`/v1/posts/${postId}/like`),
+    unlikePost: (postId: string) => instance.post(`/v1/posts/${postId}/unlike`)
 };
 
 export default api;

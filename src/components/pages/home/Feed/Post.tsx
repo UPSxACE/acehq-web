@@ -12,14 +12,49 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import type { ComponentProps, MouseEventHandler } from "react";
 import { BiCommentDots } from "react-icons/bi";
 import { RiHeartFill, RiHeartLine } from "react-icons/ri";
+import api from "@/api";
 import type { Post as PostType } from "@/api/types";
+import updateById from "@/lib/cache/updateById";
 import short from "@/lib/short";
 
 export default function Post({ post }: { post: PostType }) {
+	const queryClient = useQueryClient();
+
+	const { mutate: like } = useMutation({
+		mutationKey: ["posts", "like"],
+		mutationFn: () => api.likePost(post.id),
+		onSuccess: () => {
+			queryClient.setQueryData(["posts"], (old?: PostType[]) =>
+				updateById(old, post.id, {
+					...post,
+					liked: true,
+					likesCount: post.likesCount + 1,
+				}),
+			);
+			queryClient.refetchQueries({ queryKey: ["posts"] });
+		},
+	});
+
+	const { mutate: unlike } = useMutation({
+		mutationKey: ["posts", "unlike"],
+		mutationFn: () => api.unlikePost(post.id),
+		onSuccess: () => {
+			queryClient.setQueryData(["posts"], (old?: PostType[]) =>
+				updateById(old, post.id, {
+					...post,
+					liked: false,
+					likesCount: post.likesCount - 1,
+				}),
+			);
+			queryClient.refetchQueries({ queryKey: ["posts"] });
+		},
+	});
+
 	const router = useRouter();
 
 	const handleVisitProfile: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -34,10 +69,11 @@ export default function Post({ post }: { post: PostType }) {
 		router.push(`/${post.profile.username}/${short.fromUUID(post.id)}`);
 	};
 
-	const handleLike: MouseEventHandler<HTMLDivElement> = (e) => {
+	const handleToggleLike: MouseEventHandler<HTMLDivElement> = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
-		// TODO: implement like functionality
+		if (post.liked) return unlike();
+		like();
 	};
 
 	// TODO: infinite scroll
@@ -108,7 +144,7 @@ export default function Post({ post }: { post: PostType }) {
 				<HStack gap={1.5}>
 					<ClickableIconWrapper
 						hoverColor="red.100"
-						onClick={handleLike}
+						onClick={handleToggleLike}
 						boxProps={{ mb: 0.25 }}
 					>
 						<Icon
@@ -154,7 +190,6 @@ export default function Post({ post }: { post: PostType }) {
 
 function ClickableIconWrapper({
 	hoverColor,
-	onClick,
 	children,
 	className,
 	boxProps,

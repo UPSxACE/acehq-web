@@ -16,8 +16,7 @@ import useQuery from "@/lib/useQuery";
 export default function PopularPosts() {
 	const { data, error, isLoading } = useQuery({
 		queryKey: ["popular"],
-		queryFn: () => api.getPopularPosts(),
-		select: (res) => res.data,
+		queryFn: () => api.getPopularPosts().then((res) => res.data),
 	});
 
 	if (error || isLoading || !data || data.length === 0) return null;

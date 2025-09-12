@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { Provider } from "@/components/chakra/provider";
 import IncompatibleScreenWrapper from "@/lib/react-utils/IncompatibleScreenWrapper";
 import "./globals.css";
+import { Icon } from "@chakra-ui/react";
+import Logo from "@/components/svg/brand/acehq_alt.svg";
 import SplashScreen from "@/lib/react-utils/SplashScreen";
 import QueryClientProvider from "@/lib/tanstack-query/QueryClientProvider";
 
@@ -29,7 +31,15 @@ export default function RootLayout({
 					<QueryClientProvider>
 						<Provider>
 							<IncompatibleScreenWrapper>
-								<SplashScreen>{children}</SplashScreen>
+								<SplashScreen
+									content={
+										<Icon fontSize="60px">
+											<Logo />
+										</Icon>
+									}
+								>
+									{children}
+								</SplashScreen>
 							</IncompatibleScreenWrapper>
 						</Provider>
 					</QueryClientProvider>
