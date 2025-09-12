@@ -9,6 +9,7 @@ export type Profile = {
 export type Post = {
     id: string;
     text?: string;
+    media?: { url: string }[];
     likesCount: number;
     commentsCount: number;
     createdAt: string;

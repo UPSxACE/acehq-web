@@ -1,4 +1,4 @@
-import { HStack, Icon, Text } from "@chakra-ui/react";
+import { HStack, Icon } from "@chakra-ui/react";
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 import Logo from "@/components/svg/brand/acehq_alt.svg";

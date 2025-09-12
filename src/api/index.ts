@@ -13,11 +13,14 @@ if (!config.baseURL) {
 const instance = axios.create({
     baseURL: config.baseURL,
     timeout: 60000,
+    withCredentials: true
 });
 
 const api = {
+    getPosts: () =>
+        instance.get<Post[]>("/v1/posts"),
     getPopularPosts: () =>
-        instance.get<Post[]>("/v1/posts/popular")
+        instance.get<Post[]>("/v1/posts/popular"),
 };
 
 export default api;

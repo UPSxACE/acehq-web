@@ -6,6 +6,7 @@ import Logo from "@/components/svg/brand/acehq_alt.svg";
 
 export default function SplashScreen({ children }: { children: ReactNode }) {
 	const { isLoaded } = useAuth();
+
 	return (
 		<>
 			{!isLoaded && (

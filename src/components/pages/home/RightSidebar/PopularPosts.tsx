@@ -9,9 +9,9 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
-import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import api from "@/api";
+import useQuery from "@/lib/useQuery";
 
 export default function PopularPosts() {
 	const { data, error, isLoading } = useQuery({
@@ -55,7 +55,7 @@ export default function PopularPosts() {
 										{p.profile.username}
 									</Text>
 									<Text ml="auto" color="gray.500/90" textStyle="sm">
-										{formatDate(new Date(p.createdAt))}
+										{formatDateLabel(new Date(p.createdAt))}
 									</Text>
 								</HStack>
 							</HStack>
@@ -87,7 +87,7 @@ export default function PopularPosts() {
 	);
 }
 
-function formatDate(date: Date) {
+function formatDateLabel(date: Date) {
 	const months = [
 		"Jan",
 		"Feb",

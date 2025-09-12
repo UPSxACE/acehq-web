@@ -44,6 +44,7 @@ export default async function Home() {
 			<Stack direction="row" gap={0} justify="center">
 				<Stack
 					ml={8}
+					flexBasis={1}
 					flexGrow={1}
 					maxW={360}
 					borderRight={`1px solid #CBD5E1`}
@@ -54,7 +55,8 @@ export default async function Home() {
 				<Stack
 					as="main"
 					direction="row"
-					flexGrow={1}
+					flexBasis={1}
+					flexGrow={2}
 					maxW="900px"
 					pos="relative"
 					justify="center"
@@ -67,6 +69,7 @@ export default async function Home() {
 				<Stack
 					mr={8}
 					pos="relative"
+					flexBasis={1}
 					flexGrow={1}
 					maxW={360}
 					borderLeft={`1px solid #CBD5E1`}

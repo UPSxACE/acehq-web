@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { Provider } from "@/components/chakra/provider";
 import IncompatibleScreenWrapper from "@/lib/react-utils/IncompatibleScreenWrapper";
 import "./globals.css";
-import SplashScreen from "@/lib/react-utils/LoadingSession";
+import SplashScreen from "@/lib/react-utils/SplashScreen";
 import QueryClientProvider from "@/lib/tanstack-query/QueryClientProvider";
 
 export const metadata: Metadata = {
