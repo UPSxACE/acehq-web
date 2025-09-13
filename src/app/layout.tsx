@@ -5,6 +5,7 @@ import { Provider } from "@/components/chakra/provider";
 import IncompatibleScreenWrapper from "@/lib/react-utils/IncompatibleScreenWrapper";
 import "./globals.css";
 import { Icon } from "@chakra-ui/react";
+import { Toaster } from "@/components/chakra/toaster";
 import Logo from "@/components/svg/brand/acehq_alt.svg";
 import SplashScreen from "@/lib/react-utils/SplashScreen";
 import QueryClientProvider from "@/lib/tanstack-query/QueryClientProvider";
@@ -41,6 +42,7 @@ export default function RootLayout({
 									{children}
 								</SplashScreen>
 							</IncompatibleScreenWrapper>
+							<Toaster />
 						</Provider>
 					</QueryClientProvider>
 				</ClerkProvider>
